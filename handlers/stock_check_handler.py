@@ -1,6 +1,6 @@
 from handlers.base_order_handler import BaseOrderHandler
 from exceptions.out_of_stock_error import OutOfStockError
-from db.database import inventory
+from db.database import products
 
 
 class StockCheckHandler(BaseOrderHandler):
@@ -25,7 +25,7 @@ class StockCheckHandler(BaseOrderHandler):
             OutOfStockError: Если товар отсутствует на складе.
         """
         item = order.get("item")
-        if inventory.get(item, 0) <= 0:
+        if products[item]['quantity'] == 0:
             raise OutOfStockError(f"Нет в наличии товара '{item}'.")
         print(f"Склад: Доступен товар '{item}'.")
         super().handle(order)

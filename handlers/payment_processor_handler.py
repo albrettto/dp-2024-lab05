@@ -1,6 +1,6 @@
 from handlers.base_order_handler import BaseOrderHandler
 from exceptions.payment_processing_error import PaymentProcessingError
-from db.database import prices
+from db.database import products
 
 
 class PaymentProcessorHandler(BaseOrderHandler):
@@ -26,7 +26,7 @@ class PaymentProcessorHandler(BaseOrderHandler):
             PaymentProcessingError: Если сумма платежа меньше стоимости товара.
         """
         payment = order.get("payment", 0)
-        item_price = prices.get(order.get("item"), 0)
+        item_price = products[order.get('item')]["price"]
         if payment < item_price:
             raise PaymentProcessingError(
                 f"Недостаточно средств для покупки: '{order.get('item')}'."
