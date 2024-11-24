@@ -10,11 +10,11 @@ class PaymentProcessingError(Exception):
         "Сбой в обработке платежа произошел из-за недостаточности средств."
     )
 
-    def __init__(self, message: str = None):
+    def __init__(self, message: str | None):
         """
         Инициализирует исключение с переданным сообщением или сообщением по умолчанию.
 
         Аргументы:
-            message (str, optional): Сообщение для исключения. Если не передано, используется сообщение по умолчанию.
+            message (str | None): Сообщение для исключения. Если не передано, используется сообщение по умолчанию.
         """
         super().__init__(message or self.default_message)
