@@ -19,9 +19,9 @@ class IOrderHandler(ABC):
             handler (IOrderHandler): Следующий обработчик в цепочке обязанностей.
 
         Возвращает:
-            IOrderHandler: Возвращает следующий обработчик в цепочке.
+            IOrderHandler: Возвращает текущий обработчик для возможности цепочки вызовов.
         """
-        pass
+        raise NotImplementedError("Метод 'set_next' должен быть реализован в подклассе")
 
     @abstractmethod
     def handle(self, order: dict):
@@ -34,4 +34,4 @@ class IOrderHandler(ABC):
         Аргументы:
             order (dict): Заказ, который передается для обработки.
         """
-        pass
+        raise NotImplementedError("Метод 'handle' должен быть реализован в подклассе")
