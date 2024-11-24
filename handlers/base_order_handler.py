@@ -13,9 +13,9 @@ class BaseOrderHandler(IOrderHandler):
         """
         Инициализирует базовый обработчик с отсутствующим следующим обработчиком.
         """
-        self._next_handler = None
+        self._next_handler: IOrderHandler | None = None
 
-    def set_next(self, handler: "IOrderHandler") -> "IOrderHandler":
+    def set_next(self, handler: IOrderHandler) -> IOrderHandler:
         """
         Устанавливает следующий обработчик в цепочке обязанностей.
 
