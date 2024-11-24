@@ -18,8 +18,8 @@ class ProcessOrderCommand(ICommand):
             handler (IOrderHandler): Обработчик для выполнения логики обработки заказа.
             order (dict): Данные заказа, включая товар, оплату и адрес.
         """
-        self.handler = handler
-        self.order = order
+        self._handler = handler
+        self._order = order
 
     def execute(self):
         """
@@ -27,4 +27,4 @@ class ProcessOrderCommand(ICommand):
 
         Вызовет метод handle у обработчика заказа для выполнения логики обработки.
         """
-        self.handler.handle(self.order)
+        self._handler.handle(self._order)
